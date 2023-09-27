@@ -1,0 +1,141 @@
+:root {
+    --clr: #6f92f2;
+    --clr-alt: #3d70f1;
+    --font-awesome: "font awesome 6 free";
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #e4f2fe;
+    overflow: hidden;
+    caret-color: transparent;
+}
+
+.multiple-select {
+    width: 300px;
+    position: relative;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / .1);
+    margin: auto;
+    margin-top: 100px;
+}
+
+.multiple-select .select-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.multiple-select .select-btn .selected-count {
+    font-size: 18px;
+}
+
+.multiple-select .select-btn .arrow {
+    width: 21px;
+    height: 21px;
+    color: white;
+    background-color: var(--clr);
+    border-radius: 50%;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 400ms;
+}
+
+.multiple-select .select-btn .arrow.active {
+    transform: rotate(-180deg);
+}
+
+.multiple-select .select-items {
+    width: 100%;
+    position: absolute;
+    background-color: inherit;
+    padding: 15px;
+    border-radius: inherit;
+    box-shadow: inherit;
+    top: calc(100% + 20px);
+    left: 0;
+    list-style-type: none;
+    transform: translatey(25px);
+    opacity: 0;
+    visibility: hidden;
+
+    transition: visibility, opacity, transform, 400ms;
+}
+
+.multiple-select .select-items.active {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.multiple-select .select-items>li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 17px;
+    border-radius: inherit;
+    transition: background-color 400ms;
+}
+
+.multiple-select .select-items>li:hover {
+    background-color: #eff3ff;
+}
+
+.multiple-select .select-items>li>label {
+    display: block;
+    padding-left: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+.multiple-select>.select-items>li>label::before,
+.multiple-select>.select-items>li>label::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border: 1px solid;
+    position: absolute;
+    top: calc(50% - 7.5px);
+    left: 0;
+}
+
+.multiple-select>.select-items>li>label::before {
+    border-color: #c2c3c8;
+}
+
+.multiple-select>.select-items>li>label::after {
+    content: "\f00c";
+    font-weight: 900;
+    font-family: var(--font-awesome);
+    color: #fff;
+    background-color: var(--clr-alt);
+    border-color: var(--clr-alt);
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 400ms;
+}
+
+.multiple-select>.select-items>li>input:checked+label::after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.multiple-select>.select-items>li>input {
+    display: none;
+}
